@@ -1,44 +1,89 @@
 <!DOCTYPE html>
-
 <html lang="en">
 <head>
-    
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Consent Form Button</title>
-    <script id='exterro-consent' src='//drp1sdronly01.exterrocloud.info/fusion/public/external.js' data-ext-key='65b88db0eb0bc6d9e5964699#_#6895ad43c3104761a9b4dfd3#_#6895ad43c3104761a9b4dfd5' data-ext-domain='drp1sdronly01.exterrocloud.info' data-ext-embeddableType='appendClass' data-ext-appName='Consent and Preference Management'></script>
-    <style>
-        body {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            background-color: #f4f4f4;
-            font-family: 'Arial', sans-serif;
-            margin: 0;
-        }
-        .exterro-consent-sdk {
-            background: linear-gradient(135deg, #4CAF50, #2E7D32);
-            color: #fff;
-            padding: 15px 30px;
-            border: none;
-            border-radius: 25px;
-            font-size: 18px;
-            cursor: pointer;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-            transition: transform 0.2s, box-shadow 0.2s;
-        }
-        .exterro-consent-sdk:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
-        }
-        .exterro-consent-sdk:active {
-            transform: translateY(1px);
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Consent Form Button with Loader</title>
+      <script id='exterro-consent' src='//drp1sdronly01.exterrocloud.info/fusion/public/external.js' data-ext-key='65b88db0eb0bc6d9e5964699#_#6895ad43c3104761a9b4dfd3#_#6895ad43c3104761a9b4dfd5' data-ext-domain='drp1sdronly01.exterrocloud.info' data-ext-embeddableType='appendClass' data-ext-appName='Consent and Preference Management'></script>
+  </script>
+  <style>
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      background-color: #f4f4f4;
+      font-family: 'Arial', sans-serif;
+      margin: 0;
+    }
+    .exterro-consent-sdk {
+      background: linear-gradient(135deg, #4CAF50, #2E7D32);
+      color: #fff;
+      padding: 15px 30px;
+      border: none;
+      border-radius: 25px;
+      font-size: 18px;
+      cursor: pointer;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+      transition: transform 0.2s, box-shadow 0.2s;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+    }
+    .exterro-consent-sdk:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+    }
+    .exterro-consent-sdk:active {
+      transform: translateY(1px);
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+    }
+    .loader {
+      border: 3px solid rgba(255, 255, 255, 0.3);
+      border-top: 3px solid white;
+      border-radius: 50%;
+      width: 16px;
+      height: 16px;
+      animation: spin 0.8s linear infinite;
+    }
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+  </style>
 </head>
 <body>
-    <button style="height: 50px;" class="exterro-consent-sdk">Consent Form</button>
+  <button style="height: 50px;" class="exterro-consent-sdk" id="consentBtn">
+    Consent Form
+  </button>
+
+  <script>
+    const consentBtn = document.getElementById("consentBtn");
+
+    consentBtn.addEventListener("click", () => {
+      // Show loader
+      consentBtn.innerHTML = `<div class="loader"></div> Loading...`;
+      consentBtn.disabled = true;
+
+      // Simulate API call (replace with your actual fetch)
+      fetch("https://drp2dsdlh17.exterrocloud.info/fusion/public/external.js", { method: "GET" })
+        .then(response => {
+          if (response.status === 200) {
+            consentBtn.innerHTML = "Consent Form";
+            consentBtn.disabled = false;
+            // Trigger actual consent form click
+            document.querySelector(".exterro-consent-sdk").click();
+          } else {
+            consentBtn.innerHTML = "Error - Try Again";
+            consentBtn.disabled = false;
+          }
+        })
+        .catch(() => {
+          consentBtn.innerHTML = "Error - Try Again";
+          consentBtn.disabled = false;
+        });
+    });
+  </script>
 </body>
 </html>
