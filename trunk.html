@@ -1,93 +1,60 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+<script id='exterro-consent' src='//drp2dsdlh17.exterrocloud.info/fusion/public/external.js'data-ext-key='65b88db0eb0bc6d9e5964699#_#689ae530f739aa16fb74b8b6#_#689ae531f739aa16fb74b8b8'data-ext-domain='drp2dsdlh17.exterrocloud.info'data-ext-embeddableType='appendClass'data-ext-appName='Consent and Preference Management'></script>
+
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Consent Form Button with Loader</title>
-  <script id='exterro-consent' src='//drp2dsdlh17.exterrocloud.info/fusion/public/external.js'
-    data-ext-key='65b88db0eb0bc6d9e5964699#_#689ae530f739aa16fb74b8b6#_#689ae531f739aa16fb74b8b8'
-    data-ext-domain='drp2dsdlh17.exterrocloud.info'
-    data-ext-embeddableType='appendClass'
-    data-ext-appName='Consent and Preference Management'>
-  </script>
+  <title>Welcome to Consent Portal</title>
   <style>
     body {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 100vh;
-      background-color: #f4f4f4;
       font-family: 'Arial', sans-serif;
+      background: linear-gradient(135deg, #e3f2fd, #bbdefb);
       margin: 0;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      text-align: center;
+      color: #0d47a1;
+    }
+    h1 {
+      font-size: 2.5rem;
+      margin-bottom: 10px;
+    }
+    p {
+      font-size: 1.1rem;
+      max-width: 500px;
+      margin-bottom: 30px;
     }
     .exterro-consent-sdk {
-      background: linear-gradient(135deg, #4CAF50, #2E7D32);
-      color: #fff;
-      padding: 15px 30px;
+      padding: 12px 25px;
+      font-size: 1rem;
+      background: #0d47a1;
+      color: white;
       border: none;
       border-radius: 25px;
-      font-size: 18px;
       cursor: pointer;
-      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-      transition: transform 0.2s, box-shadow 0.2s;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 8px;
+      transition: background 0.3s ease;
+      text-decoration: none;
     }
     .exterro-consent-sdk:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
-    }
-    .exterro-consent-sdk:active {
-      transform: translateY(1px);
-      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
-    }
-    .loader {
-      border: 3px solid rgba(255, 255, 255, 0.3);
-      border-top: 3px solid white;
-      border-radius: 50%;
-      width: 16px;
-      height: 16px;
-      animation: spin 0.8s linear infinite;
-    }
-    @keyframes spin {
-      0% { transform: rotate(0deg); }
-      100% { transform: rotate(360deg); }
+      background: #1565c0;
     }
   </style>
 </head>
 <body>
+  <h1>Welcome!</h1>
+  <p>
+    This portal helps you manage your <strong>consent and preferences</strong> for data usage.
+    Please review and submit your consent form to continue.
+  </p>
   <button style="height: 50px;" class="exterro-consent-sdk" id="consentBtn">
-    Consent Form
+    Consent Form Trunk
   </button>
+  
 
-  <script>
-    const consentBtn = document.getElementById("consentBtn");
-
-    consentBtn.addEventListener("click", () => {
-      // Show loader
-      consentBtn.innerHTML = `<div class="loader"></div> Loading...`;
-      consentBtn.disabled = true;
-
-      // Simulate API call (replace with your actual fetch)
-      fetch("https://drp2dsdlh17.exterrocloud.info/fusion/public/external.js", { method: "GET" })
-        .then(response => {
-          if (response.status === 200) {
-            consentBtn.innerHTML = "Consent Form";
-            consentBtn.disabled = false;
-            // Trigger actual consent form click
-            document.querySelector(".exterro-consent-sdk").click();
-          } else {
-            consentBtn.innerHTML = "Error - Try Again";
-            consentBtn.disabled = false;
-          }
-        })
-        .catch(() => {
-          consentBtn.innerHTML = "Error - Try Again";
-          consentBtn.disabled = false;
-        });
-    });
-  </script>
 </body>
 </html>
